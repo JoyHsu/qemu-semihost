@@ -27,16 +27,34 @@ int main(void)
 
 	// Open file and show file content
 	FILE *file_in=fopen("file_in.txt","r");
+	if(!file_in)
+		printf("Error: file_in do not open");
 	char str_in[30];
-	fgets(str_in,30,file_in);
+	fgets(str_in,sizeof(str_in),file_in);
 	printf("%s",str_in);
 	close(file_in);
 
+
 	//Enter some words you want to save
 	char str_out[100];
-	scanf("%s",&str_out);
+	fgets(str_out,sizeof(str_out),stdin);
+	for(int i = 0; i < sizeof(str_out); i++)
+		{
+		if(str_out[i]=='\n')
+			{
+			str_out[i]='\0';
+			break;
+			}
+		}	
+
 	
-	printf("%s\n",str_out);
+	//Save the words that you just enter in file_out
+	FILE *file_out=fopen("file_out.txt","w");
+	if(!file_out)
+		printf("Error: file_out do not open");
+	fputs(str_out,file_out);
+	close(file_out);
+	printf("the words, %s, are saved in file_out.txt\n",str_out);
 
 	return 0;
 
