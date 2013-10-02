@@ -2,12 +2,12 @@
 #include <inttypes.h>
 
 
-#define READ_COUNTER_ADDR 0x40050000
+//#define READ_COUNTER_ADDR 0x40050000
 
-int32_t *read_counter = (int32_t *) READ_COUNTER_ADDR;
+//int32_t *read_counter = (int32_t *) READ_COUNTER_ADDR;
 int main(void)
 {
-	printf("This is a test program for QEMU counter device\n");
+	/*printf("This is a test program for QEMU counter device\n");
 	printf("See http://github.com/krasin/qemu-counter for more details\n\n");
 	printf("Let's check if the Read Counter device presented\n");
 	for (int i = 0; i < 10; i++) {
@@ -22,15 +22,21 @@ int main(void)
 	}
 	else {
 		printf("ERROR - Something is wrong with Read Counter\n");
-	}
+	}*/
 
 
-	// test input file
+	// Open file and show file content
 	FILE *file_in=fopen("file_in.txt","r");
-	char string[20];
-	fgets(string,20,file_in);
-	printf("\n%s \n",string);
+	char str_in[30];
+	fgets(str_in,30,file_in);
+	printf("%s",str_in);
 	close(file_in);
+
+	//Enter some words you want to save
+	char str_out[100];
+	scanf("%s",&str_out);
+	
+	printf("%s\n",str_out);
 
 	return 0;
 
