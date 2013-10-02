@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+
 #define READ_COUNTER_ADDR 0x40050000
 
 int32_t *read_counter = (int32_t *) READ_COUNTER_ADDR;
@@ -22,5 +23,15 @@ int main(void)
 	else {
 		printf("ERROR - Something is wrong with Read Counter\n");
 	}
+
+
+	// test input file
+	FILE *file_in=fopen("file_in.txt","r");
+	char string[20];
+	fgets(string,20,file_in);
+	printf("\n%s \n",string);
+	close(file_in);
+
 	return 0;
+
 }
